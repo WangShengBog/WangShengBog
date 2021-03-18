@@ -22,13 +22,13 @@
 
   <meta name="description" content="nginx服务更新证书1234567891011121314151617181920212223nginx配置文件: &#x2F;etc&#x2F;nginx&#x2F;sites_enabledserver &amp;#123;    listen  443;    server_name djdeveloper.cn *.djdeveloper.cn;    root    &#x2F;var&amp;#x2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BOG&#39;s Blog">
+<meta property="og:title" content="nginx相关">
 <meta property="og:url" content="http://example.com/2021/03/18/nginx%E7%9B%B8%E5%85%B3/index.html">
 <meta property="og:site_name" content="BOG&#39;s Blog">
 <meta property="og:description" content="nginx服务更新证书1234567891011121314151617181920212223nginx配置文件: &#x2F;etc&#x2F;nginx&#x2F;sites_enabledserver &amp;#123;    listen  443;    server_name djdeveloper.cn *.djdeveloper.cn;    root    &#x2F;var&amp;#x2">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-18T09:00:39.131Z">
-<meta property="article:modified_time" content="2021-03-18T09:00:39.132Z">
+<meta property="article:published_time" content="2021-03-18T09:05:06.000Z">
+<meta property="article:modified_time" content="2021-03-18T09:05:57.923Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title> | BOG's Blog</title>
+  <title>nginx相关 | BOG's Blog</title>
   
 
 
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          nginx相关
         </h1>
 
         <div class="post-meta">
@@ -172,8 +172,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-03-18 17:00:39" itemprop="dateCreated datePublished" datetime="2021-03-18T17:00:39+08:00">2021-03-18</time>
+              <time title="Created: 2021-03-18 17:05:06 / Modified: 17:05:57" itemprop="dateCreated datePublished" datetime="2021-03-18T17:05:06+08:00">2021-03-18</time>
             </span>
 
           
@@ -187,7 +188,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="nginx服务更新证书"><a href="#nginx服务更新证书" class="headerlink" title="nginx服务更新证书"></a>nginx服务更新证书</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">nginx配置文件: &#x2F;etc&#x2F;nginx&#x2F;sites_enabled</span><br><span class="line">server &#123;</span><br><span class="line">    listen  443;</span><br><span class="line">    server_name djdeveloper.cn *.djdeveloper.cn;</span><br><span class="line">    root    &#x2F;var&#x2F;www&#x2F;djdeveloper.cn;</span><br><span class="line">    autoindex   off;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;nginx&#x2F;ssl&#x2F;djdeveloper.full.crt;</span><br><span class="line">    ssl_certificate_key  &#x2F;etc&#x2F;nginx&#x2F;ssl&#x2F;djdeveloper.key;</span><br><span class="line">    </span><br><span class="line">    ssl_session_cache       shared:SSL:1m;</span><br><span class="line">    ssl_session_timeout     5m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nginx证书: &#x2F;etc&#x2F;nginx&#x2F;ssl</span><br><span class="line"></span><br><span class="line">cp **.full.crt **.full.crt.bak</span><br><span class="line">cp **.key **.key.bak</span><br><span class="line"></span><br><span class="line">vim **.full.crt cp</span><br><span class="line">vim **.key cp</span><br><span class="line"></span><br><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+        <h3 id="nginx服务更新证书"><a href="#nginx服务更新证书" class="headerlink" title="nginx服务更新证书"></a>nginx服务更新证书</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">nginx配置文件: &#x2F;etc&#x2F;nginx&#x2F;sites_enabled</span><br><span class="line">server &#123;</span><br><span class="line">    listen  443;</span><br><span class="line">    server_name djdeveloper.cn *.djdeveloper.cn;</span><br><span class="line">    root    &#x2F;var&#x2F;www&#x2F;djdeveloper.cn;</span><br><span class="line">    autoindex   off;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;nginx&#x2F;ssl&#x2F;djdeveloper.full.crt;</span><br><span class="line">    ssl_certificate_key  &#x2F;etc&#x2F;nginx&#x2F;ssl&#x2F;djdeveloper.key;</span><br><span class="line"></span><br><span class="line">    ssl_session_cache       shared:SSL:1m;</span><br><span class="line">    ssl_session_timeout     5m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nginx证书: &#x2F;etc&#x2F;nginx&#x2F;ssl</span><br><span class="line"></span><br><span class="line">cp **.full.crt **.full.crt.bak</span><br><span class="line">cp **.key **.key.bak</span><br><span class="line"></span><br><span class="line">vim **.full.crt cp</span><br><span class="line">vim **.key cp</span><br><span class="line"></span><br><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
 <h3 id="配置跨域"><a href="#配置跨域" class="headerlink" title="配置跨域:"></a>配置跨域:</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">位置: http&#123;这里, server&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">add_header &#x27;Access-Control-Allow-Origin&#x27; &#x27;*&#x27;;</span><br><span class="line">add_header &#x27;Access-Control-Allow-Credentials&#x27; &#x27;true&#x27;;</span><br></pre></td></tr></table></figure>
 <h3 id="nginx-502-错误初步排查"><a href="#nginx-502-错误初步排查" class="headerlink" title="nginx 502 错误初步排查"></a>nginx 502 错误初步排查</h3><ul>
 <li>nginx 配置文件默认目录 /etc/nginx/nginx.conf</li>
@@ -196,7 +197,7 @@
 <li>如果在日志文件中能看到请求说明与nginx无关, 是项目的问题</li>
 <li>nginx -s reload</li>
 <li>nginx -t 检查配置文件语法是否正确</li>
-<li>lsof -i:port1 检查端口使用 CLOSE_WAIT 时看 port1 -&gt; port2 是port2出了问题 </li>
+<li>lsof -i:port1 检查端口使用 CLOSE_WAIT 时看 port1 -&gt; port2 是port2出了问题</li>
 </ul>
 
     </div>
@@ -211,13 +212,6 @@
 
 
         
-    <div class="post-nav">
-      <div class="post-nav-item"></div>
-      <div class="post-nav-item">
-    <a href="/2021/03/18/git%E5%A4%87%E4%BB%BD%E5%8F%8A%E5%9B%9E%E6%BB%9A/" rel="next" title="">
-       <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
       </footer>
     
   </article>
@@ -289,7 +283,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
