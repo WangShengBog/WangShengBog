@@ -145,6 +145,125 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/25/Flask-Migrate%E6%8A%A5%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BOG's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/25/Flask-Migrate%E6%8A%A5%E9%94%99/" class="post-title-link" itemprop="url">Flask-Migrate报错</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-25 17:06:06 / Modified: 17:08:04" itemprop="dateCreated datePublished" datetime="2021-03-25T17:06:06+08:00">2021-03-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Flask-Migrate-pgsql-执行报错psycopg2-errors-DuplicateTable-relation-“user”-already-exists"><a href="#Flask-Migrate-pgsql-执行报错psycopg2-errors-DuplicateTable-relation-“user”-already-exists" class="headerlink" title="Flask-Migrate  + pgsql 执行报错psycopg2.errors.DuplicateTable: relation “user” already exists"></a>Flask-Migrate  + pgsql 执行报错psycopg2.errors.DuplicateTable: relation “user” already exists</h1><p><strong>问题出现</strong>: 全新项目, 本来是打算用mysql, 后来换pgsql, 一开始用mysql时执行过 <code>flask db migrate / flask db upgrade</code>, 测试ORM,, 换成pgsql后再执行<code>flask db upgrade</code>出现如上报错, 看字面意思是表已存在, 可pgsql中并没有此表!</p>
+<p><strong>原因</strong>: 一开始执行 <code>flask db migrate</code> 时 alembic 已经创建了记录(versions目录下的.py文件), 也就是说对 alembic 来说是已经创建过数据表了, 在sql语句执行前就被报错拦截住了, 所以即使数据库没有user表, 报错也提示表已存在!</p>
+<p><strong>解决</strong>: 直接把 versions 目录下记录全部删除, 重新执行 <code>flask db upgrade </code> </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/%E6%96%B0%E5%BB%BAflask%E9%A1%B9%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BOG's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/24/%E6%96%B0%E5%BB%BAflask%E9%A1%B9%E7%9B%AE/" class="post-title-link" itemprop="url">新建flask项目</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-24 10:11:25 / Modified: 10:11:39" itemprop="dateCreated datePublished" datetime="2021-03-24T10:11:25+08:00">2021-03-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/18/nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -412,7 +531,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
