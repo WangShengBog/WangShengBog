@@ -145,6 +145,212 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/01/mac%E4%B8%8B%E4%BD%BF%E7%94%A8oracle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BOG's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/01/mac%E4%B8%8B%E4%BD%BF%E7%94%A8oracle/" class="post-title-link" itemprop="url">mac下使用oracle.md</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-06-01 09:56:00 / Modified: 11:33:21" itemprop="dateCreated datePublished" datetime="2021-06-01T09:56:00+08:00">2021-06-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Oracle 字符串只能用单引号</p>
+</blockquote>
+<h3 id="mac安装通过docker安装使用oracle"><a href="#mac安装通过docker安装使用oracle" class="headerlink" title="mac安装通过docker安装使用oracle"></a>mac安装通过docker安装使用oracle</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/MaksymBilenko/docker-oracle-12c">https://github.com/MaksymBilenko/docker-oracle-12c</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 拉取镜像</span></span><br><span class="line">docker pull quay.io/maksymbilenko/oracle-12c</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建容器并运行</span></span><br><span class="line">docker run -d -p 8080:8080 -p 1521:1521 --name=oracle quay.io/maksymbilenko/oracle-12c</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 连接配置</span></span><br><span class="line">hostname: localhost</span><br><span class="line">port: 1521</span><br><span class="line">sid: xe</span><br><span class="line">service name: xe</span><br><span class="line">username: system</span><br><span class="line">password: oracle</span><br></pre></td></tr></table></figure>
+<h3 id="基操"><a href="#基操" class="headerlink" title="基操"></a>基操</h3><ul>
+<li>查看数据库版本: <code>select * from v$version;</code></li>
+</ul>
+<h4 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h4><ul>
+<li>创建用户:  <code>create user 用户名 identified by 密码</code><ul>
+<li>  例: <code>create user test identified by test</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>第一次创建<code>create user &#39;root&#39; identified by &#39;123456&#39;</code> </p>
+<p>提示 missing user or role name 是因为此处用户名不需要引号</p>
+<p>修改后提示无效密码, 同样密码也不需要引号</p>
+</blockquote>
+<ul>
+<li>修改密码: <code>alter user 用户名 identified by 新密码</code></li>
+</ul>
+<h4 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h4><blockquote>
+<p>oracle为兼容以前版本，提供三种标准角色（role）:connect, resource和dba.</p>
+</blockquote>
+<ol>
+<li>connect role(连接角色)</li>
+</ol>
+<p>–临时用户，特指不需要建表的用户，通常只赋予他们connect role. </p>
+<p>–connect是使用oracle简单权限，这种权限只对其他用户的表有访问权限，包括select/insert/update和delete等。</p>
+<p>–拥有connect role 的用户还能够创建表、视图、序列（sequence）、簇（cluster）、同义词(synonym)、回话（session）和其他 数据的链（link）</p>
+<ol start="2">
+<li>resource role(资源角色)</li>
+</ol>
+<p>–更可靠和正式的数据库用户可以授予resource role。</p>
+<p>–resource提供给用户另外的权限以创建他们自己的表、序列、过程(procedure)、触发器(trigger)、索引(index)和簇(cluster)。</p>
+<ol start="3">
+<li>dba role(数据库管理员角色)</li>
+</ol>
+<p>–dba role拥有所有的系统权限</p>
+<p>–包括无限制的空间限额和给其他用户授予各种权限的能力。system由dba用户拥有</p>
+<p>除了前面三种系统角色—-connect、resource和dba，用户还可以在oracle创建自己的role。</p>
+<p>用户创建的role可以由表或系统权限或两者的组合构成。</p>
+<p>为了创建role，用户必须具有create role系统权限。</p>
+<ol>
+<li><p>创建角色: <code>create role 角色名;</code></p>
+</li>
+<li><p>授权角色:  <code>grant select on 表名 to 角色名;</code></p>
+</li>
+<li><p>删除角色: <code>drop role 角色名;</code></p>
+</li>
+</ol>
+<h4 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h4><ul>
+<li>授权: <code>grant connect, resource to 用户名;</code></li>
+<li>撤消:  <code>revoke connect, resource from 用户名;</code></li>
+</ul>
+<h3 id="库表"><a href="#库表" class="headerlink" title="库表"></a>库表</h3><blockquote>
+<p>创建表时提示:  <code>no privileges on tablespace USERS</code></p>
+<p>执行: <code>alter user 库名 quota unlimited on users;</code></p>
+</blockquote>
+<ul>
+<li>创建数据库: <code>create tablespace 表间名 datafile &#39;数据文件名&#39; size 表空间大小;</code><ul>
+<li>例: <code>create tablespace TEST datafile &#39;test&#39; size 20M;</code></li>
+</ul>
+</li>
+<li>查看建表语句: <code>select dbms_metadata.get_ddl(&#39;TABLE&#39;,&#39;USERINFO&#39;) from dual;</code></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/26/CentOS%20+%20Flask%20+%20Docker%20+%20Flask-cookiecutter%20+%20Mysql%20+%20Gunicorn%20+%20Celery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BOG's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/26/CentOS%20+%20Flask%20+%20Docker%20+%20Flask-cookiecutter%20+%20Mysql%20+%20Gunicorn%20+%20Celery/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-05-26 16:47:46" itemprop="dateCreated datePublished" datetime="2021-05-26T16:47:46+08:00">2021-05-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="CentOS-Flask-Docker-Flask-cookiecutter-Mysql-Gunicorn-Celery"><a href="#CentOS-Flask-Docker-Flask-cookiecutter-Mysql-Gunicorn-Celery" class="headerlink" title="CentOS + Flask + Docker + Flask-cookiecutter + Mysql + Gunicorn + Celery"></a>CentOS + Flask + Docker + Flask-cookiecutter + Mysql + Gunicorn + Celery</h1><blockquote>
+<p>服务器是阿里云买的CentOS系统.</p>
+<p>DNF包管理器克服了YUM包管理器的一些瓶颈，提升了包括用户体验，内存占用，依赖分析，运行速度等多方面的内容。</p>
+</blockquote>
+<h1 id="1-安装docker"><a href="#1-安装docker" class="headerlink" title="1. 安装docker"></a>1. 安装docker</h1><blockquote>
+<p>yum install docker</p>
+</blockquote>
+<p>安装完执行<code>docker</code>, 提示<code>Emulate Docker CLI using podman.</code> 上网查发现是</p>
+<blockquote>
+<p> CentOS8 以上的版本默认已经安装一个等同于 Docker的容器解决方案，这个就是Podman.</p>
+</blockquote>
+<blockquote>
+<p>简单理解 <code>alias docker = podman</code></p>
+</blockquote>
+<h2 id="2-安装MySQL"><a href="#2-安装MySQL" class="headerlink" title="2. 安装MySQL"></a>2. 安装MySQL</h2><ul>
+<li><p>安装: <code>dnf install @mysql</code></p>
+</li>
+<li><p>启动: <code>systemctl start mysqld</code></p>
+</li>
+<li><p>查看运行状态: <code>systemctl status mysqld</code></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/cookiecutter-flask-restful%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -642,7 +848,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
