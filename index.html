@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-06-03 09:34:18 / Modified: 09:55:38" itemprop="dateCreated datePublished" datetime="2021-06-03T09:34:18+08:00">2021-06-03</time>
+              <time title="Created: 2021-06-03 09:34:18 / Modified: 10:05:04" itemprop="dateCreated datePublished" datetime="2021-06-03T09:34:18+08:00">2021-06-03</time>
             </span>
 
           
@@ -191,7 +191,10 @@
 <p>例:</p>
 <p><code>wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_386.tar.gz</code></p>
 <h3 id="2-解压缩"><a href="#2-解压缩" class="headerlink" title="2. 解压缩"></a>2. 解压缩</h3><p><code>tar -zvxf frp_0.37.0_linux_386.tar.gz</code></p>
-<h3 id="3-修改服务器配置"><a href="#3-修改服务器配置" class="headerlink" title="3. 修改服务器配置"></a>3. 修改服务器配置</h3><ul>
+<h3 id="3-修改服务器配置"><a href="#3-修改服务器配置" class="headerlink" title="3. 修改服务器配置"></a>3. 修改服务器配置</h3><blockquote>
+<p>后台运行: <code>nohup ./frps -c frps.ini &gt;/dev/null 2&gt;&amp;1 &amp;</code></p>
+</blockquote>
+<ul>
 <li><code>vi frps.ini</code></li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port = 7000</span><br><span class="line">token = 12345678</span><br><span class="line">vhost_http_port = 80</span><br></pre></td></tr></table></figure>
